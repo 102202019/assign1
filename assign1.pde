@@ -9,8 +9,15 @@ int h = 50;
 
 // declare variables
 // --------------------------------------------
+
+int totalScore = 500;
+
+int t = int(random(3));
+int a = int(random(6));
+int b = int(random(6));
+int c = int(random(6));
+
 // put your code inside here
-int totalScore = 0;
 
 // --------------------------------------------
 
@@ -46,9 +53,15 @@ void draw() {
     if (!rolling){
       rolling = true;
       // start rolling
-      // -------------------------------------------------
+    
       // put your code inside here
+      totalScore -= 50;
+      t = int(random(3));
+      int a = int(random(6));
+      int b = int(random(6));
+      int c = int(random(6));
       
+  
       
       // -------------------------------------------------
     }
@@ -60,15 +73,34 @@ void draw() {
     if (rolling){
       rolling = false;
       // stop rolling
-      // -------------------------------------------------
+      //-----------------------------
       // put your code inside here
       
- 
- 
- 
+      println(machine.getSlotScore(a));
+      int a = int(random(6));
+      int b = int(random(6));
+      int c = int(random(6));
       
-      // -------------------------------------------------
-    }
+      machine.setSlotFruit(0,a);
+      machine.setSlotFruit(1,b);
+      machine.setSlotFruit(2,c);
+      
+      int m = machine.getFruitCount(0); 
+      int n = machine.getFruitCount(1); 
+      int o = machine.getFruitCount(2);
+      int p = machine.getFruitCount(3);
+      int q = machine.getFruitCount(4);
+      int r = machine.getFruitCount(5);
+      
+      totalScore += machine.getSlotScore(0) * m * m + 
+                    machine.getSlotScore(1) * n * n+
+                    machine.getSlotScore(2) * o * o+
+                    machine.getSlotScore(3) * p * p+
+                    machine.getSlotScore(4) * q * q+
+                    machine.getSlotScore(5) * r* r;
+      
+    //--------------------------------
+  }
     machine.stop();
     fill(253,253,253);
     textSize(19);
@@ -83,6 +115,12 @@ void mousePressed() {
     button = !button;
   }  
 }
+
+
+
+
+
+
 
 
 
